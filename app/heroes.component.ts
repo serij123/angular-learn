@@ -7,9 +7,7 @@ import {HeroDetailComponent} from './hero-detail.component';
 @Component({
   selector : 'my-heroes',
   directives: [HeroDetailComponent],
-  providers: [HeroService],
   template: `
-  	<h1>{{title}}</h1>
   	<ul class="heroes">
   		<li 
   			*ngFor="let hero of heroes" 
