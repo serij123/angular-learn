@@ -8,8 +8,8 @@ import {HeroDetailComponent} from './hero-detail.component';
 @Component({
   selector : 'my-heroes',
   directives: [HeroDetailComponent],
-  templateUrl:'heroes.component.html',
-  styleUrls : ['heroes.component.css']
+  templateUrl:'app/heroes.component.html',
+  styleUrls : ['app/heroes.component.css']
 })
 export class HeroesComponent implements OnInit {
 	heroes : Hero[];
