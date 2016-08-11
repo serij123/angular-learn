@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from '@angular/router';
 import {Hero} from './hero';
 import {HeroService} from './hero.service';
 
@@ -8,9 +9,11 @@ import {HeroService} from './hero.service';
 })
 export class DashboardComponent {
 	heroes : Hero[];
-	selectedHero : Hero;
 	title  = 'Top heroes';
-	constructor(private heroService: HeroService){}
+	constructor(
+		private heroService: HeroService, 
+		private router: Router) {
+	}
 
     ngOnInit() {
     	this.getHeroes();
@@ -21,7 +24,8 @@ export class DashboardComponent {
     }
 
     gotoDetail(hero : Hero) {
-    	this.selectedHero = hero;
+    	let link = ['/detail', hero.id];
+    	this.router.navigate(link);
     }
 
 }
