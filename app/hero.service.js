@@ -45,11 +45,12 @@ var HeroService = (function () {
             .catch(this.handleError);
     };
     HeroService.prototype.delete = function (hero) {
-        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
         var url = this.heroesUrl + "/" + hero.id;
-        return this.http.delete(url, { headers: headers })
+        return this.http
+            .delete(url, { headers: headers })
             .toPromise()
-            .then(function () { return hero; })
             .catch(this.handleError);
     };
     HeroService.prototype.handleError = function (error) {

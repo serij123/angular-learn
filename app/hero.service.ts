@@ -46,14 +46,14 @@ export class HeroService{
 			.toPromise().then(() => hero)
 			.catch(this.handleError);
 	}
-	private delete(hero : Hero) : Promise<Hero> {
-		let headers = new Headers({'Content-Type':'application/json'});
-		let url = `${this.heroesUrl}/${hero.id}`;
-
-		return this.http.delete(url, {headers:headers})
-			.toPromise()
-			.then(() => hero)
-			.catch(this.handleError);
+	delete(hero : Hero) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    let url = `${this.heroesUrl}/${hero.id}`;
+    return this.http
+               .delete(url, {headers: headers})
+               .toPromise()
+               .catch(this.handleError);
 	}
 
 
