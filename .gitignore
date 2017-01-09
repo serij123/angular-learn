@@ -3,3 +3,7 @@ target
 /.idea
 *.iml
 node_modules
+/dist
+/app/desktop.ini
+/npm-debug.log
+/typings/desktop.ini

@@ -15,7 +15,7 @@ export class HeroesComponent implements OnInit {
 	heroes : Hero[];
 	selectedHero : Hero;
     error : any;
-    addingHero : false;
+    addingHero : boolean;
     title = 'Tour or heroes';
     constructor(
     	private heroService: HeroService,
