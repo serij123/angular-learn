@@ -4,8 +4,9 @@
         *ngFor="let hero of heroes" 
         (click)="onSelect(hero)"
         [class.selected]="hero === selectedHero">
-        <span class="badge">{{hero.id}}</span>{{hero.name}}
-    <button class="delete-button" (click)="deleteHero(hero, $event)">Delete</button>
+        <span class="badge">{{hero.id}}</span>
+        <span>{{hero.name}}</span>
+        <button class="delete-button" (click)="delete(hero);$event.stopPropagation()">x</button>
     </li>
 </ul>
 <div *ngIf="selectedHero">
@@ -13,4 +14,8 @@
     {{selectedHero.name | uppercase}} is my hero
   </h2>
   <button (click)="gotoDetail()">View Details</button>
+</div>
+<div>
+    <label>hero name:</label> <input #heroName />
+    <button (click)="add(heroName.value); heroName.value=''">Add</button>
 </div>
