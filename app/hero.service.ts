@@ -1,18 +1,36 @@
-import { Injectable }    from '@angular/core';
-import { Http,Headers }     from '@angular/http';
+//import 'rxjs/add/operator/toPromise';
 
-import 'rxjs/add/operator/toPromise';
+import { Injectable }       from '@angular/core';
+//import { Http,Headers }     from '@angular/http';
 
 import { Hero }     from './hero';
+import {HEROES} from './in-memory-data.service';
 
 @Injectable()
 export class HeroService{
-	private heroesUrl = 'app/heroes';
+	//private heroesUrl = 'app/heroes';
 
-	constructor(private http : Http) {
+	constructor(/*private http : Http*/) {
 	}
+    
+  getHeroes(): Promise<Hero[]> {
+    return Promise.resolve(HEROES);
+  }
 
-	getHeroes() {
+  getHeroesSlowly(): Promise<Hero[]> {
+    return new Promise(resolve => {
+      // Simulate server latency with 2 second delay
+      setTimeout(() => resolve(this.getHeroes()), 2000);
+    });
+  }
+
+  getHero(id: number): Promise<Hero> {
+    return this.getHeroes()
+               .then(heroes => heroes.find(hero => hero.id === id));
+  }
+  
+
+	/*getHeroes() {
 		return this.http.get(this.heroesUrl)
 				.toPromise()
 				.then(response => response.json().data as Hero[])
@@ -60,5 +78,5 @@ export class HeroService{
 	private handleError(error : any) {
 		console.error('An error occured ', error);
 		return Promise.reject(error.message || error);
-	}
+	}*/
 }

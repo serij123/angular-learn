@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import {HeroService} from './hero.service';
-import {HeroesComponent} from './heroes.component';
-
-
 @Component({
   selector: 'my-app',
   template: `
@@ -14,10 +10,7 @@ import {HeroesComponent} from './heroes.component';
     </nav>
     <router-outlet></router-outlet>
   `,
-  styleUrls:['app/app.component.css'],
-  providers: [
-    HeroService
-  ]
+  styleUrls:['app/app.component.css']
 })
 export class AppComponent {
 	title = 'Tour of heroes';
